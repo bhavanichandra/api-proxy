@@ -17,4 +17,4 @@ COPY ./src/ .
 
 EXPOSE ${API_PORT}
 
-CMD [ "node", "app.js" ]
+CMD [ "node", "app.js" "--api-target", "${API_TARGET_URL}", "--api-port", "${API_PORT}"]
