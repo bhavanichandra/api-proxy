@@ -12,7 +12,15 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-      
+    
+    - name: Setup Bun
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+    
+    - name: Install Dependencies
+      run: npm ci
+
     - name: Setup Bun
       uses: oven-sh/setup-bun@v2
 
@@ -25,7 +33,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: app-executable
-        path: dist/app # The built executable path
+        path: dist/api-proxy
 
   release:
     needs: build
@@ -53,6 +61,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: dist/app
-        asset_name: app
+        asset_path: dist/api-proxy
+        asset_name: api-proxy
         asset_content_type: application/octet-stream
