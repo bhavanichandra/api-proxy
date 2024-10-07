@@ -13,14 +13,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
       
-    - name: Set up Bun
-      run: |
-        curl -fsSL https://bun.sh/install | bash
-        echo 'export BUN_INSTALL="$HOME/.bun"' >> "$GITHUB_ENV"
-        echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> "$GITHUB_ENV"
-
-    - name: Install dependencies using Bun
-      run: bun install
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
 
     - name: Build executable using Bun
       run: |
