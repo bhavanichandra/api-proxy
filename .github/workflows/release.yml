@@ -19,7 +19,7 @@ jobs:
     - name: Build executable using Bun
       run: |
         mkdir -p dist
-        bun build src\app.js --compile --outfile dist\api-proxy
+        bun build src/app.js --compile --outfile dist/api-proxy
 
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v3
